@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginStart="5dp"
@@ -17,7 +17,7 @@
         android:background="@drawable/bg_sender"
         android:maxWidth="310dp"
         android:maxHeight="400dp"
-        android:minHeight="30dp">
+        >
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -37,8 +37,9 @@
             android:inputType="textLongMessage|textMultiLine"
             android:maxWidth="270dp"
             android:minWidth="50dp"
-            android:text="ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+            android:text="sss"
             app:layout_constraintBottom_toTopOf="@+id/sendertime"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />

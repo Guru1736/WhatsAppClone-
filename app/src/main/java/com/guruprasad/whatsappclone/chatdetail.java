@@ -1,8 +1,10 @@
 package com.guruprasad.whatsappclone;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -12,7 +14,10 @@ import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.guruprasad.whatsappclone.Adapters.ChatAdapter;
 import com.guruprasad.whatsappclone.Models.MessageModel;
 import com.guruprasad.whatsappclone.databinding.ActivityChatdetailBinding;
@@ -73,7 +78,26 @@ public class chatdetail extends AppCompatActivity {
         final  String receiverroom = receiverid+senderid;
 
 
+        firebaseDatabase.getReference().child("chats").child(senderroom).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                messageModels.clear();
+                for (DataSnapshot snapshot1 : snapshot.getChildren())
+                {
+                    MessageModel model = snapshot1.getValue(MessageModel.class);
+                    messageModels.add(model);
+                }
+
+                chatAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
