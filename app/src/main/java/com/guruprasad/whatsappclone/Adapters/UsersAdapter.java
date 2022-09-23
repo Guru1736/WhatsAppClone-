@@ -14,6 +14,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.guruprasad.whatsappclone.Models.users;
 import com.guruprasad.whatsappclone.R;
 import com.guruprasad.whatsappclone.chatdetail;
@@ -47,6 +52,26 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         users users = list.get(position);
         Picasso.get().load(users.getProfile_pic()).placeholder(R.drawable.user).into(holder.imageView);
         holder.username.setText(users.getFullname());
+
+
+        FirebaseDatabase.getInstance().getReference().child("chats").child(FirebaseAuth.getInstance().getUid()+users.getUserID())
+                        .orderByChild("timestamp").limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChildren())
+                        {
+                            for (DataSnapshot snapshot1 : snapshot.getChildren())
+                             {
+                                holder.lastmessage.setText(snapshot1.child("message").getValue().toString());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +80,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
                 intent.putExtra("profilepic",users.getProfile_pic());
                 intent.putExtra("username",users.getFullname());
                 context.startActivity(intent);
+
+
+
+
 
 
 

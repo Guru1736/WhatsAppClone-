@@ -56,6 +56,10 @@ public class Home extends AppCompatActivity {
                 Toast.makeText(this, "You clicked Setting ", Toast.LENGTH_SHORT).show();
                 break;
 
+            case R.id.groupchat:
+                startActivity(new Intent(getApplicationContext(),Groupchat.class));
+
+
         }
         return true ;
     }
