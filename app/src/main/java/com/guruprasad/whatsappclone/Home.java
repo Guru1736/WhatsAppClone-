@@ -53,7 +53,8 @@ public class Home extends AppCompatActivity {
                 break;
 
             case R.id.Setting:
-                Toast.makeText(this, "You clicked Setting ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),setting.class));
+                finish();
                 break;
 
             case R.id.groupchat:
