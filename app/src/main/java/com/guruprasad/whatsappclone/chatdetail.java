@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +20,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.guruprasad.whatsappclone.Adapters.ChatAdapter;
 import com.guruprasad.whatsappclone.Models.MessageModel;
+import com.guruprasad.whatsappclone.Models.users;
 import com.guruprasad.whatsappclone.databinding.ActivityChatdetailBinding;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +36,7 @@ public class chatdetail extends AppCompatActivity {
     FirebaseAuth auth ;
     FirebaseDatabase firebaseDatabase ;
     ImageView back ;
+
 
 
 
@@ -48,6 +53,8 @@ public class chatdetail extends AppCompatActivity {
 
         back = findViewById(R.id.back);
 
+
+
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -55,6 +62,10 @@ public class chatdetail extends AppCompatActivity {
         String receiverid = getIntent().getStringExtra("userid");
         String username = getIntent().getStringExtra("username");
         String profilepic = getIntent().getStringExtra("profilepic");
+
+
+
+
 
         binding.usernameChat.setText(username);
         Picasso.get().load(profilepic).placeholder(R.drawable.user).into(binding.profileImage);
@@ -67,7 +78,8 @@ public class chatdetail extends AppCompatActivity {
             }
         });
         final ArrayList<MessageModel> messageModels = new ArrayList<>();
-        final ChatAdapter chatAdapter = new ChatAdapter(messageModels,this);
+
+        final ChatAdapter chatAdapter = new ChatAdapter(receiverid, messageModels, this);
 
         binding.chatscreen.setAdapter(chatAdapter);
 
@@ -87,6 +99,7 @@ public class chatdetail extends AppCompatActivity {
                 for (DataSnapshot snapshot1 : snapshot.getChildren())
                 {
                     MessageModel model = snapshot1.getValue(MessageModel.class);
+                    model .setMessageID(snapshot1.getKey());
                     messageModels.add(model);
                 }
 

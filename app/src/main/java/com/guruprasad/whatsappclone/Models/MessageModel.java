@@ -2,7 +2,7 @@ package com.guruprasad.whatsappclone.Models;
 
 public class MessageModel {
 
-    String Uid , message ;
+    String Uid , message , messageID ;
     Long timestamp ;
 
     public MessageModel(String uid, String message, Long timestamp) {
@@ -20,6 +20,13 @@ public class MessageModel {
     }
 
 
+    public String getMessageID() {
+        return messageID;
+    }
+
+    public void setMessageID(String messageID) {
+        this.messageID = messageID;
+    }
 
     public String getUid() {
         return Uid;

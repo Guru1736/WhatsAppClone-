@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -56,7 +57,11 @@ public class ChatsFragment extends Fragment {
                 {
                     users users = dataSnapshot.getValue(com.guruprasad.whatsappclone.Models.users.class);
                     users.setUserID(dataSnapshot.getKey());
-                    list.add(users);
+                    if (!users.getUserID().equals(FirebaseAuth.getInstance().getUid()))
+                    {
+                        list.add(users);
+                    }
+
                 }
                 adapter.notifyDataSetChanged();
             }

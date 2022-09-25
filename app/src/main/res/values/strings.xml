@@ -12,4 +12,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="group_chat">Group Chat</string>
+    <string name="user_name">User Name :</string>
+    <string name="enter_the_username">Enter the username</string>
+    <string name="about">About :</string>
+    <string name="save">SAve</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="chats">Chats</string>
+    <string name="notification">Notification</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="help">Help</string>
+    <string name="about2">About</string>
 </resources>

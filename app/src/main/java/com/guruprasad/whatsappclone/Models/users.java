@@ -4,6 +4,9 @@ public class users {
 
     String profile_pic  , fullname , mail , password ,userID , lastmessage ;
 
+
+    String About ;
+
     public users(String profile_pic, String fullname, String mail, String password, String userID, String lastmessage) {
         this.profile_pic = profile_pic;
         this.fullname = fullname;
@@ -12,6 +15,19 @@ public class users {
         this.userID = userID;
         this.lastmessage = lastmessage;
     }
+
+    public String getAbout() {
+        return About;
+    }
+
+    public void setAbout(String about) {
+        About = about;
+    }
+
+    public users(String about) {
+        About = about;
+    }
+
 
     public users() {
     }

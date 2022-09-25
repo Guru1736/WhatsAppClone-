@@ -25,20 +25,23 @@
         android:orientation="vertical">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/pic"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
+            android:src="@drawable/user"
             android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/user" />
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            />
 
         <ImageView
             android:id="@+id/add_pic"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="-30dp"
             app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -53,8 +56,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Name :"
-                android:textSize="17dp"
+                android:text="@string/user_name"
+                android:textSize="17sp"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/white"
                 android:padding="5dp"
@@ -66,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter the username"
+                android:hint="@string/enter_the_username"
                 android:inputType="textPersonName"
                 android:text=""
                 android:textColor="@color/white"
@@ -83,7 +86,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About :"
+                android:text="@string/about"
                 android:textSize="17sp"
                 android:layout_marginEnd="45dp"
                 android:textColor="@color/white"
@@ -96,22 +99,110 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:importantForAutofill="no"
+                android:hint="@string/about2"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <Button
+            android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/white"
             android:padding="10dp"
-            android:text="SAve"
+            android:text="@string/save"
             android:textColor="@color/black"
             app:cornerRadius="10dp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/setting_bg"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="45dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="@string/privacy_policy"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_baseline_privacy_tip_24" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="@string/chats"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_baseline_chat_24" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="@string/notification"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_baseline_notifications_24" />
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="@string/invite_friends"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_baseline_groups_24" />
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="@string/help"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_baseline_help_24" />
     </LinearLayout>
 
 
